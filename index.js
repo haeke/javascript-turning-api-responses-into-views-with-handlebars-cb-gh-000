@@ -10,13 +10,14 @@ function getRepositories() {
 }
 
 function showRepositories(event, data) {
-  const repos = JSON.parse(this.responseText);
-  const repoList = '<ul>' + repos.map(res => {
-    return (`
-      <li>
-        <h2><a href="${res.html_url}">${res.name}</a></h2>
-        <p>Watchers: ${res.watchers_count}</p>
-        <p>Forks: ${res.forks_count}</p>
-        <p>Issues: ${res.open_issues_count}</p>
-      </li>`)}).join('') + "</ul>";
-}
+  const repos = JSON.parse(this.responseText)
+  const repoList = '<ul>' + repos.map(r => {
+   return (`
+          <li>
+            <h2><a href="${r.html_url}">${r.name}</a></h2>
+            <p>Watchers: ${r.watchers_count}</p>
+            <p>Forks: ${r.forks_count}</p>
+            <p>Issues: ${r.open_issues_count}</p>
+          </li>`
+          )
+  }).join('') + "</ul>"
