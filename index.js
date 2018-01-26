@@ -21,3 +21,4 @@ function showRepositories(event, data) {
           </li>`
           )
   }).join('') + "</ul>"
+}
