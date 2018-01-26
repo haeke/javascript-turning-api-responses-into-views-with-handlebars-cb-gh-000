@@ -10,12 +10,13 @@ function getRepositories() {
 }
 
 function showRepositories(event, data) {
-  //JSON.parse() to make a proper JSON object with this.responseText
   const repos = JSON.parse(this.responseText);
-  //map over the repolist object
-  //add each repo name as a list item
-  //use join so there are no commas
-  const repoList = `<ul>${repos.map(res => '<li><a href="' + res.html_url + '">' + res.name + '</li>').join('')} </ul>`;
-  //show the data in the div with id named repositories
-  document.getElementById("repositories").innerHTML = repoList;
+  const repoList = '<ul>' + repos.map(res => {
+    return (`
+      <li>
+        <h2><a href="${res.html_url}">${res.name}</a></h2>
+        <p>Watchers: ${res.watchers_count}</p>
+        <p>Forks: ${res.forks_count}</p>
+        <p>Issues: ${res.open_issues_count}</p>
+      </li>`)}).join('') + "</ul>";
 }
